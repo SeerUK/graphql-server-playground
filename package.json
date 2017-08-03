@@ -10,7 +10,9 @@
   "dependencies": {
     "babel": "^6.23.0",
     "babel-register": "^6.24.1",
-    "express": "^4.15.3"
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "graphql": "^0.10.5"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1"
