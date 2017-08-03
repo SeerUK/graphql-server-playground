@@ -1,0 +1,18 @@
+{
+  "name": "graphql-server-playground",
+  "description": "Playing around with making a GraphQL server.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeerUK/graphql-server-playground.git"
+  },
+  "author": "Elliot Wright <hello@elliotdwright.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-register": "^6.24.1",
+    "express": "^4.15.3"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1"
+  }
+}
