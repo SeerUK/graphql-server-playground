@@ -15,7 +15,16 @@ const posts = [
         content: "Hello, World!",
         authorId: "1",
     },
+    {
+        id: "2",
+        title: "We could make the schema programmatically, dynamically!",
+        content: "Well I'll be damned",
+        authorId: "1",
+    },
 ];
+
+const findAuthorById = (id) => authors.filter(author => author.id === id)[0];
+const findPostById = (id) => posts.filter(post => post.id === id)[0];
 
 export const AuthorType = new graphql.GraphQLObjectType({
     name: "Author",
@@ -58,7 +67,7 @@ export const PostType = new graphql.GraphQLObjectType({
                     type: graphql.GraphQLString,
                 },
             },
-            resolve: ({ authorId }) => authors.filter(author => author.id === authorId)[0],
+            resolve: ({ authorId }) => findAuthorById(authorId),
         },
     },
 });
@@ -66,6 +75,23 @@ export const PostType = new graphql.GraphQLObjectType({
 export const QueryType = new graphql.GraphQLObjectType({
     name: "Query",
     fields: {
+        allAuthors: {
+            type: new graphql.GraphQLList(AuthorType),
+            resolve: () => authors,
+        },
+        author: {
+            type: AuthorType,
+            args: {
+                id: {
+                    type: graphql.GraphQLString,
+                },
+            },
+            resolve: (_, { id }) => findAuthorById(id),
+        },
+        allPosts: {
+            type: new graphql.GraphQLList(PostType),
+            resolve: () => posts,
+        },
         post: {
             type: PostType,
             args: {
@@ -73,7 +99,7 @@ export const QueryType = new graphql.GraphQLObjectType({
                     type: graphql.GraphQLString,
                 },
             },
-            resolve: (_, { id }) => posts.filter(post => post.id === id)[0],
+            resolve: (_, { id }) => findPostById(id),
         },
     },
 });
