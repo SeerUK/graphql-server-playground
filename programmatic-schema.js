@@ -23,8 +23,17 @@ const posts = [
     },
 ];
 
-const findAuthorById = (id) => authors.filter(author => author.id === id)[0];
-const findPostById = (id) => posts.filter(post => post.id === id)[0];
+const findContentEntryById = (type, id) => new Promise((resolve, reject) => (
+    resolve(null)
+));
+
+const findAuthorById = (id) => new Promise((resolve, reject) => (
+    resolve(authors.filter(author => author.id === id)[0])
+));
+
+const findPostById = (id) => new Promise((resolve, reject) => (
+    resolve(posts.filter(post => post.id === id)[0])
+));
 
 export const AuthorType = new graphql.GraphQLObjectType({
     name: "Author",
